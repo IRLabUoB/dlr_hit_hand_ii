@@ -1,28 +1,24 @@
 # make the namespace match the name you use to instantiate the arm in the xacro
-head:
-  root: right_palm_link
-  tip: right_pinky_distal_link
-  # joints is not used, since with the robot name and urdf name conventions, the parsing is hardcoded
-  # but as a general solution, joint names could be loaded as well, like controllers do
+right:
   joints: 
-  - right_thumb_abd_joint
-  - right_thumb_inner_joint
-  - right_thumb_outer1_joint
-  - right_thumb_outer2_joint
-  - right_index_abd_joint
-  - right_index_inner_joint
-  - right_index_outer1_joint
-  - right_index_outer2_joint
-  - right_middle_abd_joint
-  - right_middle_inner_joint
-  - right_middle_outer1_joint
-  - right_middle_outer2_joint
-  - right_ring_abd_joint
-  - right_ring_inner_joint
-  - right_ring_outer1_joint
-  - right_ring_outer2_joint
-  - right_pinky_abd_joint
-  - right_pinky_inner_joint
-  - right_pinky_outer1_joint
-  - right_pinky_outer2_joint
+    - right_thumb_abd_joint
+    - right_thumb_inner_joint
+    - right_thumb_outer1_joint
+    - right_thumb_outer2_joint
+    - right_index_abd_joint
+    - right_index_inner_joint
+    - right_index_outer1_joint
+    - right_index_outer2_joint
+    - right_middle_abd_joint
+    - right_middle_inner_joint
+    - right_middle_outer1_joint
+    - right_middle_outer2_joint
+    - right_ring_abd_joint
+    - right_ring_inner_joint
+    - right_ring_outer1_joint
+    - right_ring_outer2_joint
+    - right_pinky_abd_joint
+    - right_pinky_inner_joint
+    - right_pinky_outer1_joint
+    - right_pinky_outer2_joint
   

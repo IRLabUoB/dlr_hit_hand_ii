@@ -2,7 +2,7 @@
 
   <class
     name="dlr_hit_hand_ii_hw/DefaultDLRHitHandIIHWSim"
-    type="dlr_hit_hand_ii::DefaultDLRHitHandIIHWSim"
+    type="dlr_hit_hand_ii_hw::DefaultDLRHitHandIIHWSim"
     base_class_type="gazebo_ros_control::RobotHWSim">
     <description>
       A default robot simulation interface which constructs joint handles from an SDF/URDF for the DLR HitHand II.
