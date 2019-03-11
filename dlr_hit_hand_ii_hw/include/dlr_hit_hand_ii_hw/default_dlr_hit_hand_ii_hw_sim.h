@@ -58,6 +58,7 @@ public:
 
 
       virtual void writeSim(ros::Time time, ros::Duration period);
+      virtual void readSim(ros::Time time, ros::Duration period);
 };
 
 typedef boost::shared_ptr<DefaultDLRHitHandIIHWSim> DefaultDLRHitHandIIHWSimPtr;

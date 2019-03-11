@@ -54,11 +54,10 @@ bool DefaultDLRHitHandIIHWSim::initSim(
   {
 
     // filter transmission interface
-
     std::vector<transmission_interface::TransmissionInfo> transmissions_filtered;
     int njoints = 20;
 
-    std::vector<std::string> joint_names;
+    joint_names_.resize(njoints);
 
     std::vector<std::string> raw_joint_names = {
       "_thumb_outer1_joint", "_thumb_outer2_joint","_thumb_inner_joint","_thumb_abd_joint",
@@ -68,39 +67,20 @@ bool DefaultDLRHitHandIIHWSim::initSim(
       "_pinky_abd_joint", "_pinky_inner_joint", "_pinky_outer1_joint", "_pinky_outer2_joint"};
 
     for(int i = 0; i < raw_joint_names.size(); i++){
-        joint_names.push_back( robot_namespace + raw_joint_names[i] );
+        joint_names_[i] = robot_namespace + raw_joint_names[i];
+        ROS_INFO("Joint name %s",joint_names_[i].c_str());
     }
-
-    // joint_names.push_back( robot_namespace + std::string("_thumb_abd_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_thumb_inner_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_thumb_outer1_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_thumb_outer2_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_index_abd_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_index_inner_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_index_outer1_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_index_outer2_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_middle_abd_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_middle_inner_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_middle_outer1_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_middle_outer2_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_ring_abd_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_ring_inner_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_ring_outer1_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_ring_outer2_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_pinky_abd_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_pinky_inner_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_pinky_outer1_joint") );
-    // joint_names.push_back( robot_namespace + std::string("_pinky_outer2_joint") );
 
 
     for (int j = 0; j < njoints; ++j)
     {
-      // std::cout << "Check joint " << joint_names_[j] << std::endl;
+      std::cout << "Check joint " << joint_names_[j] << std::endl;
       std::vector<transmission_interface::TransmissionInfo>::iterator it = transmissions.begin();
       for(; it != transmissions.end(); ++it)
       {
-        std::cout << "With transmission " << it->name_ << " trying to match: " << joint_names[j] << std::endl;
-        if (joint_names[j].compare(it->joints_[0].name_) == 0)
+        std::cout << "With transmission " << it->name_ << " trying to match: " << joint_names_[j] << std::endl;
+        std::cout << "Transmission joint name: " << it->joints_[0].name_ << std::endl;
+        if (joint_names_[j].compare(it->joints_[0].name_) == 0)
         {
           transmissions_filtered.push_back( *it );
           std::cout << "Found a match for transmission " << it->name_ << std::endl;
@@ -117,6 +97,20 @@ void DefaultDLRHitHandIIHWSim::writeSim(ros::Time time, ros::Duration period)
 {
   gazebo_ros_control::DefaultRobotHWSim::writeSim(time, period);
 }
+
+void DefaultDLRHitHandIIHWSim::readSim(ros::Time time, ros::Duration period)
+{
+  for(int j = 0; j < n_dof_; ++j)
+  {
+    joint_position_[j] += angles::shortest_angular_distance(joint_position_[j], sim_joints_[j]->GetAngle(0).Radian());
+    joint_velocity_[j] = sim_joints_[j]->GetVelocity(0);
+    joint_effort_[j] = sim_joints_[j]->GetForce((unsigned int)(0));
+  }
+
+
+}
+
+
 }
 
 PLUGINLIB_EXPORT_CLASS(dlr_hit_hand_ii_hw::DefaultDLRHitHandIIHWSim, gazebo_ros_control::RobotHWSim)

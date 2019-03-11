@@ -3,19 +3,37 @@
 
     <xacro:macro name="dlr_hit2_gazebo" params="name">
 
+        <!-- set friction properties -->
+        <xacro:property name="gazebo_friction_properties">
+            <gravity>true</gravity>
+            <mu1>500.0</mu1>
+            <mu2>500.0</mu2>
+            <kp>1000000.0</kp>
+            <kd>100.0</kd>
+            <!-- <fdir1>string</fdir1> -->
+            <!-- <dampingFactor>double</dampingFactor> -->
+            <!-- <maxVel>double</maxVel> -->
+            <!-- <minDepth>double</minDepth> -->
+            <!-- <maxContacts>int</maxContacts> -->
+        </xacro:property>
+        <!-- <xacro:insert_block name="gazebo_friction_properties"/> -->
+
+
         <gazebo reference="${name}_palm_link">
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
     
         <gazebo reference="${name}_thumb_abd_link">
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
     
         <gazebo reference="${name}_thumb_proximal_link">
-            <selfCollide>true</selfCollide>
-            <sensor name='${name}_thumb_proximal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide> -->
+            <!-- <sensor name='${name}_thumb_proximal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
                 <contact>
@@ -27,14 +45,15 @@
                     <frameName>${name}_thumb_proximal_link</frameName>
                     <bumperTopicName>${name}_finger_12_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_thumb_medial_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_thumb_medial_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_thumb_medial_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -46,13 +65,14 @@
                     <frameName>${name}_thumb_medial_link</frameName>
                     <bumperTopicName>${name}_thumb_medial_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_thumb_distal_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_thumb_distal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_thumb_distal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -64,18 +84,20 @@
                     <frameName>${name}_thumb_distal_link</frameName>
                     <bumperTopicName>${name}_thumb_distal_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_index_abd_link">
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
     
         <gazebo reference="${name}_index_proximal_link">
-            <selfCollide>true</selfCollide>
-            <sensor name='${name}_index_proximal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide> -->
+            <!-- <sensor name='${name}_index_proximal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
                 <contact>
@@ -87,14 +109,15 @@
                     <frameName>${name}_index_proximal_link</frameName>
                     <bumperTopicName>${name}_finger_12_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_index_medial_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_index_medial_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_index_medial_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -106,13 +129,14 @@
                     <frameName>${name}_index_medial_link</frameName>
                     <bumperTopicName>${name}_index_medial_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_index_distal_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_index_distal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_index_distal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -124,18 +148,20 @@
                     <frameName>${name}_index_distal_link</frameName>
                     <bumperTopicName>${name}_index_distal_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_middle_abd_link">
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
     
         <gazebo reference="${name}_middle_proximal_link">
-            <selfCollide>true</selfCollide>
-            <sensor name='${name}_middle_proximal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide> -->
+            <!-- <sensor name='${name}_middle_proximal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
                 <contact>
@@ -147,14 +173,15 @@
                     <frameName>${name}_middle_proximal_link</frameName>
                     <bumperTopicName>${name}_finger_12_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_middle_medial_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_middle_medial_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_middle_medial_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -166,13 +193,14 @@
                     <frameName>${name}_middle_medial_link</frameName>
                     <bumperTopicName>${name}_middle_medial_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_middle_distal_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_middle_distal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_middle_distal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -184,8 +212,9 @@
                     <frameName>${name}_middle_distal_link</frameName>
                     <bumperTopicName>${name}_middle_distal_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_ring_abd_link">
@@ -194,8 +223,8 @@
         </gazebo>
     
         <gazebo reference="${name}_ring_proximal_link">
-            <selfCollide>true</selfCollide>
-            <sensor name='${name}_ring_proximal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide> -->
+            <!-- <sensor name='${name}_ring_proximal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
                 <contact>
@@ -207,14 +236,15 @@
                     <frameName>${name}_ring_proximal_link</frameName>
                     <bumperTopicName>${name}_finger_12_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_ring_medial_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_ring_medial_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_ring_medial_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -226,13 +256,14 @@
                     <frameName>${name}_ring_medial_link</frameName>
                     <bumperTopicName>${name}_ring_medial_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_ring_distal_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_ring_distal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_ring_distal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -244,18 +275,20 @@
                     <frameName>${name}_ring_distal_link</frameName>
                     <bumperTopicName>${name}_ring_distal_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_pinky_abd_link">
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
     
         <gazebo reference="${name}_pinky_proximal_link">
-            <selfCollide>true</selfCollide>
-            <sensor name='${name}_pinky_proximal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide> -->
+            <!-- <sensor name='${name}_pinky_proximal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>
                 <contact>
@@ -267,14 +300,15 @@
                     <frameName>${name}_pinky_proximal_link</frameName>
                     <bumperTopicName>${name}_finger_12_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
-            <turnGravityOff>false</turnGravityOff>
+            <!-- <turnGravityOff>false</turnGravityOff> -->
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_pinky_medial_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_pinky_medial_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_pinky_medial_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -286,13 +320,14 @@
                     <frameName>${name}_pinky_medial_link</frameName>
                     <bumperTopicName>${name}_pinky_medial_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo reference="${name}_pinky_distal_link">
-            <selfCollide>true</selfCollide> 
-            <sensor name='${name}_pinky_distal_contact_sensor' type='contact'>
+            <!-- <selfCollide>true</selfCollide>  -->
+            <!-- <sensor name='${name}_pinky_distal_contact_sensor' type='contact'>
                 <always_on>true</always_on>
                 <update_rate>100</update_rate>              
                 <contact>
@@ -304,8 +339,9 @@
                     <frameName>${name}_pinky_distal_link</frameName>
                     <bumperTopicName>${name}_pinky_distal_bumper</bumperTopicName>
                 </plugin>
-            </sensor>
+            </sensor> -->
             <material>DLR/LightGrey</material>
+            <xacro:insert_block name="gazebo_friction_properties"/> 
         </gazebo>
 
         <gazebo>
